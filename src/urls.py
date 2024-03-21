@@ -9,7 +9,10 @@ class Navigate():
         """
             Login Page
         """
-        
+        from src.pages.login_page import LoginPage
         
         url = "https://pm-tool-e63fa77e3353.herokuapp.com/login"
         CONF.driver.get(url)
+        # Return page object
+        return LoginPage()
+        
