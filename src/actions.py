@@ -149,8 +149,8 @@ class Actions():
             CONF.driver.find_element(By.XPATH, target).send_keys(text)
     
         if path_type == "css":
-            CONF.driver.find_element(By.CSS, target).clear()
-            CONF.driver.find_element(By.CSS, target).send_keys(text)
+            CONF.driver.find_element(By.CSS_SELECTOR, target).clear()
+            CONF.driver.find_element(By.CSS_SELECTOR, target).send_keys(text)
             
         if path_type == "id":
             CONF.driver.find_element(By.ID, target).clear()

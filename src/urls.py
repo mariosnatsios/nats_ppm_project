@@ -15,4 +15,36 @@ class Navigate():
         CONF.driver.get(url)
         # Return page object
         return LoginPage()
+    
+    def home_page(self):
+        """
+            Navigate to homepage
+        """
+        from src.pages.home_page import HomePage
+        url = "https://pm-tool-e63fa77e3353.herokuapp.com/dashboard"
+        CONF.driver.get(url)
+        # Return page object
+        return HomePage()
+    
+    def logout_page(self):
+        """
+            Login Page
+        """
+        from src.pages.logout_page import LogoutPage
         
+        url = "https://pm-tool-e63fa77e3353.herokuapp.com/logout"
+        CONF.driver.get(url)
+        # Return page object
+        return LogoutPage()
+    
+    def signup_page(self):
+        """
+            Signup Page
+        """
+        from src.pages.signup_page import SignUpPage
+        
+        url = "https://pm-tool-e63fa77e3353.herokuapp.com/signup"
+        CONF.driver.get(url)
+        # Return page object
+        return SignUpPage()
+    
