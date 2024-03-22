@@ -4,21 +4,21 @@ from src.actions import Actions
 class LoginPage(Actions):
     
     # ----------------------- HELPERS ------------------------
-    def path_input_email():
+    def path_input_email(self):
         """
             Return path of email input field
         """
         path = "//input[@id='email']"
         return path
     
-    def path_input_password():
+    def path_input_password(self):
         """
             Return path of password input field
         """
         path = "//input[@id='password']"
         return path
     
-    def path_button_submit():
+    def path_button_submit(self):
         """
             Returns path of 'LOGIN' button
         """

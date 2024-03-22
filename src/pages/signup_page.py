@@ -5,7 +5,7 @@ class SignUpPage(Actions):
     
     # ----------------------- HELPERS ------------------------
     
-    def path_input_fullname():
+    def path_input_fullname(self):
         
         """
             Returns path of Name input field
@@ -13,7 +13,7 @@ class SignUpPage(Actions):
         path = "//div[contains(@class, 'input')]//input[contains(@id, 'fullName')]"
         return path
     
-    def path_input_email():
+    def path_input_email(self):
         
         """
             Returns path of Email input field
@@ -21,7 +21,7 @@ class SignUpPage(Actions):
         path = "//div[contains(@class, 'input')]//input[contains(@id, 'email')]"
         return path
     
-    def path_input_password():
+    def path_input_password(self):
             
             """
                 Returns path of Passwod input field
@@ -29,7 +29,7 @@ class SignUpPage(Actions):
             path = "//div[contains(@class, 'input')]//input[contains(@id, 'password')]"
             return path
     
-    def path_input_company():
+    def path_input_company(self):
         
         """
             Returns path of Company input field
@@ -37,15 +37,15 @@ class SignUpPage(Actions):
         path = "//div[contains(@class, 'input')]//input[contains(@id, 'company')]"
         return path
     
-    def path_input_address():
+    def path_input_address(self):
         
         """
             Returns path of Address input field
         """
-        path = "//div[contains(@class, 'input')]//input[contains(@id, 'adress')]"
+        path = "//div[contains(@class, 'input')]//input[contains(@id, 'address')]"
         return path
     
-    def path_button_sign_up():
+    def path_button_sign_up(self):
         """
             Returns path of the Sign Up button
         """
@@ -59,6 +59,10 @@ class SignUpPage(Actions):
         """
         path = self.path_button_sign_up()
         self.find_and_click(path)
+        
+        # Return the VeifyAccountPage() object
+        from src.pages.verify_account import VerifyAccountPage
+        return VerifyAccountPage()
     
     # ----------------------- SET TEXT ------------------------
     def set_text_input_fullname(self, firstname):

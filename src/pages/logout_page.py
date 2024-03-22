@@ -5,14 +5,14 @@ class LogoutPage(Actions):
     
     # ----------------------- HELPERS ------------------------
     
-    def path_a_login_btn():
+    def path_a_login_btn(self):
         """
             Returns path of 'LOGIN' button
         """
         path = "//a[@id='login']"
         return path
     
-    def path_a_signup_btn():
+    def path_a_signup_btn(self):
         """
             Returns path of 'sign Up' button
         """
