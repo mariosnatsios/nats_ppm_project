@@ -1,17 +1,29 @@
-import time
-ts = str(int(time.time()))
+from random import randint
 
 
-def signup_credentials():
+
+class Credentials():
     """
-        Returns  dictionaty with valid signup credentials 
+        Generate/Store credentials for signup and login
     """
-    credentials = {
-        "fullname": "DummyName" + ts,
-        "password": "DummyPassword" + ts,
-        "email": f"dummy{ts}@example.com",
-        "company": f"DummyCompany{ts}",
-        "address": f"DummyAddress{ts}"
-    }
+    def __init__(self):
+         self.ts = str(randint(1111111,2222222))
     
-    return credentials
+
+    def signup_credentials(self, optional=False):
+        """
+            Returns  dictionaty with valid signup credentials 
+        """
+            
+        credentials = {
+            "fullname": "DummyName" + self.ts,
+            "password": "DummyPassword" + self.ts,
+            "email": f"dummy{self.ts}@example.com",
+            "company": "",
+            "address": ""
+        }
+        # If we want the optianal credentials of company and address to be included in the signup form
+        if optional:
+            credentials.update({ "company": f"DummyCompany{self.ts}",  "address": f"DummyAddress{self.ts}"})
+        
+        return credentials
