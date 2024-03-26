@@ -26,4 +26,4 @@ class Test_Project_Creation_Deletion(Fixtures):
             Delete projects and validate their removal
         """
         login(LOG_IN_CREDENTIALS)
-        delete_projects(["Nats Project", "Nats Project_2"])        
+        delete_projects(self.PROJECT_NAMES)        
