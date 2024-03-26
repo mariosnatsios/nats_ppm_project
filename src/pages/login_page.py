@@ -34,7 +34,7 @@ class LoginPage(Actions):
         self.find_and_click(path)
 
     # ----------------------- VALIDATE ------------------------
-    def validate_p_empty_field_error_msg(self, field, msg = 'invalid login info' , exists=True):
+    def validate_p_empty_field_error_msg(self, field, msg = 'Invalid login info' , exists=True):
         """
             Validate 'This field is required' error message for the mandatoty
             sign-up fields of name, email and pasword.

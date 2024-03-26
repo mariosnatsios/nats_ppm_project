@@ -1,6 +1,5 @@
 from src.fixtures import Fixtures
 from src.functional import check_valid_login
-from src.data.credentials_data import Credentials
 
 class Test_Valid_SignUp(Fixtures):
     """
