@@ -1,3 +1,4 @@
+import time
 from src.urls import Navigate
 from src.conf import CONF
 navigate = Navigate()
@@ -140,7 +141,7 @@ def check_valid_login(data):
     # Perform Login
     login(data)
     # Validate Welcome card
-    home_page.validate_span_welcome_card_title()
+    home_page.validate_a_create_project_btn()
     # Validate homepage/dashboard url
     current_url = CONF.driver.current_url
     assert current_url == "https://pm-tool-e63fa77e3353.herokuapp.com/dashboard", "NOT THE CORRECT LANDING PAGE!!"
@@ -176,3 +177,74 @@ def check_invalid_login(data, error_fields = []):
     current_url = CONF.driver.current_url
     assert current_url == "https://pm-tool-e63fa77e3353.herokuapp.com/login", "WRONG LANDING PAGE!!"
     
+def create_projects(projects):
+    """
+        Fills the create project form and creates a project by clicking the corresponding button
+        
+         @param projects: list of dictionaries with the field categories and data for the various fields to be populated.
+        
+        projects = 
+        [
+            {
+            "name": "My_ProJect_Name",
+            "description": "A project description",
+            }
+        ]
+    """
+    
+    for project in projects:
+        # navigate to create project page
+        page = navigate.create_project_page()
+        
+        if "name" in project.keys():
+            page.set_text_input_name(project["name"])
+        
+        if "description" in project.keys():
+            page.set_text_input_description(project["description"])
+        # Click the create button
+        page.click_button_create()
+    
+def check_project_creation(projects, exists=True):
+    """
+        @param projects: list of dictionaries with project names and
+                     their corresponding descriptions to check
+        
+        projects = [ {
+            "name": "My_ProJect_Name",
+            "description": "A project description",
+            },
+            
+            {
+            "name": "My_ProJect_Name_2",
+            "description": "A project description_2",
+            },  
+            
+            ]
+    """
+    # Go to Dashboard
+    page = navigate.home_page()
+    # Validate the existing projects
+    for project in projects:
+        page.validate_div_project(title=project["name"], descr=project["description"], 
+                                  exists=exists)
+        
+def delete_projects(projects):
+    """
+        Delete projects bases on titlte
+        @param project: list of project names we want to delete
+    """
+     # Go to Dashboard
+    page = navigate.home_page()
+    time.sleep(2)
+    for project in projects:
+        page.click_a_delete_project(project)
+        CONF.driver.switch_to.alert.accept()
+        time.sleep(1)
+    
+    CONF.driver.refresh()
+    # Refresh and validate the successful deletion
+    for project in projects:
+        page.validate_div_project_name(project, exists=False)        
+    
+    
+      

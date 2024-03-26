@@ -1,6 +1,7 @@
 from random import randint
 
 
+LOG_IN_CREDENTIALS = {"email": "m.natsios@dummy.com", "password": "1234"}
 
 class Credentials():
     """

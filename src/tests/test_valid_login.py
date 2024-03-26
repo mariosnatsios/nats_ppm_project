@@ -1,3 +1,4 @@
+import unittest
 from src.fixtures import Fixtures
 from src.functional import check_valid_login
 

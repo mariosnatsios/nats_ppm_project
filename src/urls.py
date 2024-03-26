@@ -47,4 +47,15 @@ class Navigate():
         CONF.driver.get(url)
         # Return page object
         return SignUpPage()
+
+    def create_project_page(self):
+        """
+            Navigates to createProject page
+        """
+        from src.pages.create_project import CreateProjectPage
+        url = "https://pm-tool-e63fa77e3353.herokuapp.com/createProject"
+        CONF.driver.get(url)
+        # Return page object
+        return CreateProjectPage()
+
     
