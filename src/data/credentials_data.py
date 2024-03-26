@@ -40,20 +40,3 @@ class Credentials():
             
         return credentials
     
-    def login_credentials(input_data={}):
-        """
-            Login Credentials
-             @param input_data: dictionaty with the fields and data to populate the signup form
-                                {
-        """
-        if input_data:
-            credentials = input_data
-        else:
-            # Dedault login credentials
-            credentials = {
-                "email": "m.natsios@dummy.com",
-                "passoword": "1234"
-            }
-        
-        return credentials
-        
