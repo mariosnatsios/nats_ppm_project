@@ -64,6 +64,45 @@ class SignUpPage(Actions):
         from src.pages.verify_account import VerifyAccountPage
         return VerifyAccountPage()
     
+    # ----------------------- VALIDATE ------------------------
+    def validate_p_empty_field_error_msg(self, field, msg = 'This field is required' , exists=True):
+        """
+            Validate 'This field is required' error message for the mandatoty
+            sign-up fields of name, email and pasword.
+        """
+        if field == 'name':
+            path = "//form//div[contains(@class, 'row')][.//input[@id='fullName'][@class='invalid']] \
+                     //p[contains(.,'" + str(msg) + "')]"
+                     
+        if field == 'email':
+            path = "//form//div[contains(@class, 'row')][.//input[@id='email'][@class='invalid']] \
+                        //p[contains(.,'" + str(msg) + "')]"
+                        
+        if field == 'password':
+             path = "//form//div[contains(@class, 'row')][.//input[@id='password'][@class='invalid']] \
+                    //p[contains(.,'" + str(msg) + "')]"
+                    
+        self.existence(path, exists=exists)
+        
+        
+    def validate_p_invalid_email_error_msg(self,  msg = 'Invalid email format' , exists=True):
+        """
+            Validate Invalid email format' error message 
+        """
+        path = "//form//div[contains(@class, 'row')][.//input[@id='email'][@class='invalid']] \
+                     //p[contains(.,'" + str(msg) + "')]"
+                    
+        self.existence(path, exists=exists)
+   
+    def validate_p_already_exist_email_error_msg(self, email, exists=True):
+        """
+            Validate Invalid email format' error message 
+        """
+        path = f"//form//div[contains(@class, 'row')][.//input[@id='email'][@class='invalid']] \
+                     //p[contains(.,'Email `{email}` already exits')]"
+                    
+        self.existence(path, exists=exists)
+               
     # ----------------------- SET TEXT ------------------------
     def set_text_input_fullname(self, firstname):
         """
