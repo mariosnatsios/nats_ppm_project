@@ -24,12 +24,36 @@ class HomePage(Actions):
     
     def click_a_delete_project(self, project):
         """
-            Delete a project
+            Clicks Delete  project
         """
         path = "//div[contains(@class, 'card')][.//span[contains(.,'" + str(project) + "')]] \
                 //a[contains(@id, 'delete_project')]"
         self.find_and_click(path)
         
+    def click_a_edit_project(self, project):
+        """
+            Clicks Edit project
+        """
+        path = "//div[contains(@class, 'card')][.//span[contains(.,'" + str(project) + "')]] \
+                //a[contains(@id, 'update_project')]"
+        self.find_and_click(path)
+        
+    def click_a_add_task_to_project(self, project):
+        """
+            Clicks Add Task to project
+        """
+        path = "//div[contains(@class, 'card')][.//span[contains(.,'" + str(project) + "')]] \
+                //a[contains(@id, 'add_task')]"
+        self.find_and_click(path)
+        
+    def click_a_view_tasks_of_project(self, project):
+        """
+            Clicks View Tasks of project
+        """
+        path = "//div[contains(@class, 'card')][.//span[contains(.,'" + str(project) + "')]] \
+                //a[contains(@id, 'view_tasks')]"
+        self.find_and_click(path)
+         
     # ----------------------- VALIDATE ------------------------
     def validate_span_welcome_card_title(self, exists=True):
         """

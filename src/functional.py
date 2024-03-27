@@ -122,6 +122,7 @@ def login(data):
         
      # Clicks the Login button
     page.click_button_submit()
+    time.sleep(2)
     
         
 def check_valid_login(data):
@@ -242,7 +243,59 @@ def delete_projects(projects):
         time.sleep(1)
         # Refresh and validate the successful deletion
         CONF.driver.refresh()
-        page.validate_div_project_name(project, exists=False)        
+        page.validate_div_project_name(project, exists=False)
+        
+        
+def check_invalid_project_creation(project, name_error=False, descr_error=False):
+    """
+     @param projects: dictionary with the field categories and data for the various fields to be populated.
+        
+        projects = 
+        [
+            {
+            "name": "My_ProJect_Name",
+            "description": "A project description",
+            },
+            ...
+            {
+                ...
+            }
+        ]
     
+    """
+    # from src.pages.create_project import CreateProjectPage
+    # page = CreateProjectPage()
+    page = navigate.create_project_page()
+    time.sleep(2)
+    # Perform project creation
+    create_projects([project])
     
+    if not project:
+        error_fields =  ['name', 'description']
+        # Validate error message 'This field is required' appears for all 
+        # name and description fields
+        for field in error_fields:
+            page.validate_p_empty_field_error_msg(field)
+    else:
+        if name_error:
+            # Validate required field error appears only under the Name field
+            page.validate_p_name_requird_error_msg()
+            page.validate_p_description_requird_error_msg(exists=False)
+            
+        if descr_error:
+            # Validate required field error appears only under the Description field
+            page.validate_p_name_requird_error_msg(exists=False)
+            page.validate_p_description_requird_error_msg()
+            
+    # Validate that we stay in createProject page by checking the url
+    current_url = CONF.driver.current_url
+    assert current_url == "https://pm-tool-e63fa77e3353.herokuapp.com/createProject", "YOU ARE AT WRONG PAGE!"
+            
+    
+def edit_project(projects):
+    """
+        Edit existing projects
+        @projects: list of project names we want to edit
+    """
+    pass
       
