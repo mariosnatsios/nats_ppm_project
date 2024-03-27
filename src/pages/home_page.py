@@ -26,7 +26,7 @@ class HomePage(Actions):
         """
             Delete a project
         """
-        path = "//div[contains(@class, 'card-content')][.//span[contains(.,'" + str(project) + "')]] \
+        path = "//div[contains(@class, 'card')][.//span[contains(.,'" + str(project) + "')]] \
                 //a[contains(@id, 'delete_project')]"
         self.find_and_click(path)
         

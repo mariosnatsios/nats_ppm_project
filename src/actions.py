@@ -98,7 +98,7 @@ class Actions():
         """
             Checks if element does not exist or is visible 
         """
-        success = False
+        success = True
         error_msg = f"{path_type} EXISTS IN DOM: {target}"
         
         if path_type == "xpath":

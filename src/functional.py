@@ -240,10 +240,8 @@ def delete_projects(projects):
         page.click_a_delete_project(project)
         CONF.driver.switch_to.alert.accept()
         time.sleep(1)
-    
-    CONF.driver.refresh()
-    # Refresh and validate the successful deletion
-    for project in projects:
+        # Refresh and validate the successful deletion
+        CONF.driver.refresh()
         page.validate_div_project_name(project, exists=False)        
     
     
