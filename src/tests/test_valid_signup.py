@@ -7,8 +7,8 @@ class Test_Valid_SignUp(Fixtures):
     """
         Cheks the signup proccess
     """
-    CREDENTIALS = {"email": "m.natsios@dummy.com", "passoword": "1234"}
-    
+    CREDENTIALS =  Credentials().signup_credentials()
+    CREDENTIALS_OPT = Credentials().signup_credentials(optional=True)
     
     def test_1_check_signup(self):
         """

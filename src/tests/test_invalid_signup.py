@@ -7,7 +7,6 @@ class Test_Valid_SignUp(Fixtures):
     """
         Cheks the signup proccess
     """
-    INVALID_1 = Credentials().login_credentials()    
     INVALID_2 = {"email": "m.natsiosdummy.com"}
     INVALID_3 = {"fullname":"mnatsios", "email": "m.natsios@dummy.com", "password": "XXX"}
     

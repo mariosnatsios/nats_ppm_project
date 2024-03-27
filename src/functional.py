@@ -178,6 +178,19 @@ def check_invalid_login(data, error_fields = []):
     current_url = CONF.driver.current_url
     assert current_url == "https://pm-tool-e63fa77e3353.herokuapp.com/login", "WRONG LANDING PAGE!!"
     
+def get_project_id(project):
+    """
+        Retrieve the id of a newly created project from the url
+        @param project: name of project the name of which we want to retrieve
+    """
+    page = navigate.home_page()
+    # Click the Edit button
+    page.click_a_edit_project(project)
+    # Retrieve project id
+    current_url= CONF.driver.current_url
+    project_id = current_url.split("/")[4]
+    return project_id
+    
 def create_projects(projects):
     """
         Fills the create project form and creates a project by clicking the corresponding button
@@ -292,10 +305,25 @@ def check_invalid_project_creation(project, name_error=False, descr_error=False)
     assert current_url == "https://pm-tool-e63fa77e3353.herokuapp.com/createProject", "YOU ARE AT WRONG PAGE!"
             
     
-def edit_project(projects):
+def edit_project(project_id, input_data):
     """
         Edit existing projects
-        @projects: list of project names we want to edit
+        @project_id: Id of the created project
+        @param input data: dictionary with the keys (fields) and data (values) to update with
     """
-    pass
+   
+    page = navigate.edit_project(project_id)
+    time.sleep(2)
+
+    if "name" in input_data.keys():
+        page.set_text_input_name(input_data["name"])
+        
+    if "description" in input_data.keys():
+        page.set_text_input_description(input_data["description"])
+        
+    # Click the Update button
+    page.click_button_update()
+
+
+
       

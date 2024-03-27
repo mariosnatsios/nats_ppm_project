@@ -57,5 +57,17 @@ class Navigate():
         CONF.driver.get(url)
         # Return page object
         return CreateProjectPage()
+    
+    def edit_project(self, project_id):
+        """
+            Navigates to update project page for a specific project id 
+        """
+        from src.pages.update_project_page import UpdateProjectPage
+        
+        url = f"https://pm-tool-e63fa77e3353.herokuapp.com/projects/{project_id}/update"
+        CONF.driver.get(url)
+        # Return page object
+        return UpdateProjectPage()
+        
 
     
