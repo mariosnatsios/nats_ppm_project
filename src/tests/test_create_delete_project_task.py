@@ -3,7 +3,7 @@ from src.fixtures import Fixtures
 from src.data.credentials_data import LOG_IN_CREDENTIALS
 from src.functional import login, create_projects, delete_projects, \
                            create_project_task, get_project_id, \
-                           check_project_task    
+                           check_project_task, delete_project_task 
 
 
 class Test_Create_Delete_Project_Task(Fixtures):
@@ -54,5 +54,25 @@ class Test_Create_Delete_Project_Task(Fixtures):
         """
         login(LOG_IN_CREDENTIALS)
         check_project_task(project_id=project_id, task_data=self.TASK_TO_CHECK)
+        
+    def test_4_delete_task(self):
+        """
+            Delete created task
+        """
+        login(LOG_IN_CREDENTIALS)
+        delete_project_task(project_id=project_id, task_names=[self.TASK_TO_CHECK["title"]])
+        
+    def test_5_check_task(self):
+        """
+            Check deleted task removal
+        """
+        login(LOG_IN_CREDENTIALS)
+        check_project_task(project_id=project_id, task_data=self.TASK_TO_CHECK, exists=False)
+        
+        
+    def test_6_delete_project(self):
+        """
+            Delete created project and reset
+        """
         
     

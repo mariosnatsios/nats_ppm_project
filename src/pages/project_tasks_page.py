@@ -41,3 +41,22 @@ class ProjectTasksPage(Actions):
                                           file=data_to_check["file"])
         
         self.existence(path, exists=exists)
+    
+    # ----------------------- CLICK ------------------------
+    def click_a_edit_task(self, task_name):
+        """
+            Clicks Edit btn to update a task
+        """
+        path = "//div[@draggable][contains(.,'" + str(task_name) + "')]" \
+                "//div[contains(@class, 'card-action')]//a[contains(@id, 'update_task')]"
+                
+        self.find_and_click(path)
+    
+    def click_a_delete_task(self, task_name):
+        """
+            Clicks Deletr btn to update a task
+        """
+        path = "//div[@draggable][contains(.,'" + str(task_name) + "')]" \
+                "//div[contains(@class, 'card-action')]//a[contains(@id, 'delete_task')]"
+
+        self.find_and_click(path)

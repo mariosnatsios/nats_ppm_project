@@ -388,6 +388,19 @@ def check_project_task(project_id, task_data, exists=True):
     page.validate_div_project_task(data_to_check=task_data, exists=exists)
     
     
+def delete_project_task(project_id, task_names):
+    """
+        Delete multiple tasks from a project
+        @param task_names: list of task names for deletion
+    """
+    page = navigate.project_tasks_page(id=project_id)
+    
+    for task in task_names:
+        page.click_a_delete_task(task)
+        CONF.driver.switch_to.alert.accept()
+        time.sleep(1)
+    
+    
     
 
 
