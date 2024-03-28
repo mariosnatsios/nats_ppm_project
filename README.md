@@ -21,3 +21,25 @@ Installation
    pip install -r requirements.txt
    `````````````````````````````````
 
+Running Tests
+---------------
+To execute the automated tests, follow these steps:
+
+1. Navigate into the `tests` directory:
+  `````````````
+   cd src/tests
+  `````````````
+2. Run the test suite using the following command:
+   ``````````````````````
+   python -m unittest -v
+   ``````````````````````
+   This will execute all the test cases defined in the test suite.
+
+
+
+
+
+
+
+
+   
