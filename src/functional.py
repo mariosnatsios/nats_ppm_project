@@ -1,4 +1,5 @@
-import time
+import time, os
+from selenium.webdriver.common.keys import Keys
 from src.urls import Navigate
 from src.conf import CONF
 navigate = Navigate()
@@ -323,6 +324,55 @@ def edit_project(project_id, input_data):
         
     # Click the Update button
     page.click_button_update()
+    
+
+def create_project_task(project_id, task_data):
+    """
+        Creates a task for a project
+        
+        @param project_id: Id ot the project we want to create the task for
+        @param task_data: dictioney with the field names and the input data to populate them
+        
+        task_data = {
+            
+            "summary": "...",
+            "description": "....",
+            "status": "IN PROGRESS",
+            "labels": "['design', 'testing', 'backend']",
+            "file": "flower.png"
+        }
+    """
+    page = navigate.create_task_page(project_id)
+
+    if "summary" in task_data.keys():
+        page.set_text_input_summary(task_data["summary"])
+    
+    if "description" in task_data.keys():
+        page.set_text_input_description(task_data["description"])
+    
+    if "status" in task_data.keys():
+        page.click_li_status_dropdown_option(task_data["status"])
+    
+    if "labels" in task_data.keys():
+        for label in task_data["labels"]:
+            page.click_li_labels_dropdown_option(label)
+            # Close dropdown by pressing TAB
+            dropdown_input = CONF.driver.find_element("xpath", page.path_input_labels_dropdown())
+            dropdown_input.send_keys(Keys.TAB)
+            
+    if "file" in task_data.keys():
+        # absolute_file_path = "C:\\Users\\MariosNatsios\\Desktop\\training\\nats_ppm_project\\src\\images.jpg"
+        absolute_file_path = os.path.abspath(task_data["file"])
+        file_input = CONF.driver.find_element("id", "attachments")
+
+        # file_input = page.find_input_attachement_field()
+        file_input.send_keys(absolute_file_path)
+    
+    # Clicks the Create button
+    page.click_button_create_task()
+    
+    
+    
 
 
 

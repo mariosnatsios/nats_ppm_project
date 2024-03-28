@@ -28,7 +28,7 @@ class CreateTaskPage(Actions):
         path = "//div[contains(@class, 'input-field')][contains(.,'Status')]//input"
         return path
     
-    def path_li_status_dropdown_option(option):
+    def path_li_status_dropdown_option(self, option):
         """
             Returns path of specific list option from the status dropdown
         """
@@ -42,27 +42,34 @@ class CreateTaskPage(Actions):
         path = "//div[contains(@class, 'input-field')][contains(.,'Labels')]//input"
         return path
     
-    def path_li_labels_dropdown_option(option):
+    def path_li_labels_dropdown_option(self, option):
         """
             Returns path of specific list option from the labels dropdown
         """
         path = "//div[contains(@class, 'input-field')][contains(.,'Labels')]//li[contains(.,'" + str(option) + "')]"
         return path
     
-    def path_button_create_task_button():
+    def path_button_create_task_button(self):
         """
             Returns path of Create button
         """
         path = "//button[@type='submit'][contains(.,'Create')]"
         return path
     
-    def path_input_upload_file():
+    def path_input_upload_file(self):
         """
             Returns path of upload file input field
         """
         path = "//input[@id='attachments']"
         return path
     
+    def find_input_attachement_field(self):
+        """
+            Finds the input field fot attachment uploading
+        """
+        input_obj = self.find_element(self.path_input_upload_file())
+        return input_obj
+
     # ----------------------- CLICK --------------------------
     def click_li_status_dropdown_option(self, option):
         """

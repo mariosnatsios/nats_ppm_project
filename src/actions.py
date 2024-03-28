@@ -160,7 +160,6 @@ class Actions():
             CONF.driver.find_element(By.CLASS_NAME, target).clear()
             CONF.driver.find_element(By.CLASS_NAME, target).send_keys(text)
             
-    
             
             
 

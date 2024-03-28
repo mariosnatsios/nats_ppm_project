@@ -68,6 +68,19 @@ class Navigate():
         CONF.driver.get(url)
         # Return page object
         return UpdateProjectPage()
+    
+    
+    def create_task_page(self, project_id):
+        """
+            Navigates to create task page for a specific project id 
+        """
+        from src.pages.create_task_page import CreateTaskPage
+        
+        url = f"https://pm-tool-e63fa77e3353.herokuapp.com/projects/{project_id}/createTask"
+        CONF.driver.get(url)
+        # Return page object
+        return CreateTaskPage()
+        
         
 
     
