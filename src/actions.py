@@ -3,6 +3,7 @@ from selenium.webdriver.common.by import By
 from selenium.common.exceptions import TimeoutException
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver import ActionChains
 
 
 class Actions():
@@ -159,6 +160,22 @@ class Actions():
         if path_type == "class_name":
             CONF.driver.find_element(By.CLASS_NAME, target).clear()
             CONF.driver.find_element(By.CLASS_NAME, target).send_keys(text)
+            
+    def drag_and_drop(self, from_target, to_target):
+        """
+            Perform drag and drop
+        """
+        self.exists(from_target)
+        self.exists(to_target)
+        
+        element_from_target =  CONF.driver.find_element(By.XPATH, from_target)
+        element_to_target = CONF.driver.find_element(By.XPATH, to_target)
+        
+        # ActionChains(CONF.driver).drag_and_drop(element_from_target, element_to_target).perform()
+        
+        ActionChains(CONF.driver).click_and_hold(element_from_target).move_to_element(element_to_target).release(element_to_target).perform()
+
+
             
             
             

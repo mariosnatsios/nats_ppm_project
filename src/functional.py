@@ -399,6 +399,19 @@ def delete_project_task(project_id, task_names):
         page.click_a_delete_task(task)
         CONF.driver.switch_to.alert.accept()
         time.sleep(1)
+        
+def change_project_task_status(project_id,  title, status_from, status_to):
+    """
+        Change task status by draggng and dropping 
+        
+        @param project_id: Id of project under probing
+        @param title: title of the project we want tp drag m drop
+        @param status_from: initial status column before task move
+        @param status_to: landing status column for the task
+    """
+    page = navigate.project_tasks_page(id=project_id)
+    # Perfom drag and drop
+    page.drag_and_drop_task_status_change(title=title, status_from=status_from, status_to=status_to)
     
     
     

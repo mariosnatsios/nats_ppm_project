@@ -21,7 +21,7 @@ class ProjectTasksPage(Actions):
             path += f"[//a[@id='card_attachments'][contains(.,'{file}')]]"
             
         return path
-            
+                
     # ----------------------- VALIDATE ------------------------
     def validate_div_project_task(self, data_to_check, exists=True):
         """
@@ -37,7 +37,7 @@ class ProjectTasksPage(Actions):
         }
         """
         path = self.path_div_project_task(status=data_to_check["status"], title=data_to_check["title"], 
-                                          descr=data_to_check["description"],labels=data_to_check["labels"], 
+                                          descr=data_to_check["description"], labels=data_to_check["labels"], 
                                           file=data_to_check["file"])
         
         self.existence(path, exists=exists)
@@ -60,3 +60,18 @@ class ProjectTasksPage(Actions):
                 "//div[contains(@class, 'card-action')]//a[contains(@id, 'delete_task')]"
 
         self.find_and_click(path)
+        
+    
+    # ----------------------- DRAG N DROP ------------------------
+    def drag_and_drop_task_status_change(self, title, status_from, status_to):
+        """
+            Change project status by drag and drop
+            
+            @param title: title of the project we want tp drag m drop
+            @param status_from: initial status column before task move
+            @param status_to: landing status column for the task
+        """
+        target_from = self.path_div_project_task(status=status_from, title=title)
+        target_to = f"//div[contains(@id, '{status_to}')]"
+        self.drag_and_drop(target_from, target_to)
+        
