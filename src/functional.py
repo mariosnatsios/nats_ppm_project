@@ -371,6 +371,22 @@ def create_project_task(project_id, task_data):
     # Clicks the Create button
     page.click_button_create_task()
     
+def check_project_task(project_id, task_data, exists=True):
+    """
+        Validate a project task
+        @param task_data: dictionary with data for validation
+        
+        task_data = {
+            "status": "to_do_items" or "in_progress_items" or "in_review_items" or "done_items",
+            "title": "Task Title",
+            "description": "Task Description",
+            "labels": ["design", "testing"],
+            "file": "images.png"
+        }
+    """
+    page = navigate.project_tasks_page(id=project_id)
+    page.validate_div_project_task(data_to_check=task_data, exists=exists)
+    
     
     
 

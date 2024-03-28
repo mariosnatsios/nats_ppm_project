@@ -2,7 +2,8 @@ import unittest, time
 from src.fixtures import Fixtures
 from src.data.credentials_data import LOG_IN_CREDENTIALS
 from src.functional import login, create_projects, delete_projects, \
-                           create_project_task, get_project_id
+                           create_project_task, get_project_id, \
+                           check_project_task    
 
 
 class Test_Create_Delete_Project_Task(Fixtures):
@@ -22,6 +23,14 @@ class Test_Create_Delete_Project_Task(Fixtures):
             "file": "images.jpg"
         }
     ]
+    
+    TASK_TO_CHECK = {
+           "title": f"Project Task Summary {ts}" ,
+           "description": f"Project Task Description {ts}", 
+            "status": "in_progress",
+            "labels": ["design", "testing"],
+            "file": "images.jpg"
+        }
 
     def test_1_setup(self):
             """
@@ -39,5 +48,11 @@ class Test_Create_Delete_Project_Task(Fixtures):
         login(LOG_IN_CREDENTIALS)
         create_project_task(project_id, self.TASKS[0])
         
+    def test_3_check_task(self):
+        """
+            Validate created task in project tasks
+        """
+        login(LOG_IN_CREDENTIALS)
+        check_project_task(project_id=project_id, task_data=self.TASK_TO_CHECK)
         
     
