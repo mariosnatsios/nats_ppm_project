@@ -1,6 +1,4 @@
-from src.conf import CONF
 from src.actions import Actions
-import time
 
 class CreateTaskPage(Actions):
      # ----------------------- HELPERS ------------------------

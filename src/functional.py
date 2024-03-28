@@ -414,8 +414,57 @@ def change_project_task_status(project_id,  title, status_from, status_to):
     page.drag_and_drop_task_status_change(title=title, status_from=status_from, status_to=status_to)
     
     
+def edit_project_task(task_id, task_data):
+    """
+        Edits a project task
+        
+        @param task_id: Id ot the task we want to edit the task for
+        @param task_data: dictionary with the field names and the input data to populate them
+        
+        task_data = {
+            
+            "title": "...",
+            "description": "....",
+            "status": "IN PROGRESS",
+            "labels": "['design', 'testing', 'backend']",
+            "file": "flower.png"
+        }
+        
+    """
+    page = navigate.update_tasks_page(task_id)
+    time.sleep(3)
     
+    if "summary" in task_data.keys():
+        page.set_text_input_summary(task_data["summary"])
+    
+    if "description" in task_data.keys():
+        page.set_text_input_description(task_data["description"])
+    
+    if "status" in task_data.keys():
+        page.click_li_status_dropdown_option(task_data["status"])
+    
+    if "labels" in task_data.keys():
+        if task_data["labels"] == []:
+            pass
+        else:
+            for label in task_data["labels"]:
+                page.click_li_labels_dropdown_option(label)
+                # Close dropdown by pressing TAB
+                dropdown_input = CONF.driver.find_element("xpath", page.path_input_labels_dropdown())
+                dropdown_input.send_keys(Keys.TAB)
+            
+    if "file" in task_data.keys():
+        if not task_data["file"]:
+            pass
+        else:
+            # absolute_file_path = "C:\\Users\\MariosNatsios\\Desktop\\training\\nats_ppm_project\\src\\images.jpg"
+            absolute_file_path = os.path.abspath(task_data["file"])
+            file_input = CONF.driver.find_element("id", "attachments")
 
-
+            # file_input = page.find_input_attachement_field()
+            file_input.send_keys(absolute_file_path)
+        
+    # Clicks the Update button
+    page.click_button_update_task()
 
       
