@@ -15,4 +15,6 @@ class Test_Valid_SignUp(Fixtures):
             Test login with valid fullname, email and password
         """
         check_valid_login(self.CREDENTIALS)
-        
+
+if __name__ == "__main__":
+    unittest.main()

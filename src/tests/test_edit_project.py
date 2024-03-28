@@ -44,4 +44,6 @@ class Test_Edit_Project(Fixtures):
         """
         login(LOG_IN_CREDENTIALS)
         delete_projects([self.PROJECTS_EDITED[0]["name"]])    
-            
+
+if __name__ == "__main__":
+    unittest.main()

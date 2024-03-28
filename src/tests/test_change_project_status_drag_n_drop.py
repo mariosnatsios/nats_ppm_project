@@ -82,4 +82,5 @@ class Test_Change_Project_Task_Status_Drag_N_Drop(Fixtures):
         check_project_task(project_id=self.DATA["project_id"], task_data=self.TASKS[1])
 
     
-    
+if __name__ == "__main__":
+    unittest.main()

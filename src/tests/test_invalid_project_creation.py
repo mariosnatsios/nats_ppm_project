@@ -32,3 +32,6 @@ class Test_Invalid_Project_Creation(Fixtures):
         """
         login(LOG_IN_CREDENTIALS)
         check_invalid_project_creation(project=self.PROJECTS[1], descr_error=True)
+
+if __name__ == "__main__":
+    unittest.main()

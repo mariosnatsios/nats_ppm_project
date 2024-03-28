@@ -22,3 +22,6 @@ class Test_Valid_SignUp(Fixtures):
             company and address
         """
         check_valid_signup(data=self.CREDENTIALS_OPT)
+        
+if __name__ == "__main__":
+    unittest.main()

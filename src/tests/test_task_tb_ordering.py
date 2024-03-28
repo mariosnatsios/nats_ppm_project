@@ -22,4 +22,5 @@ class Test_Task_DB_Ordering(Fixtures):
                                task_cards_after=self.TASKS_REVERSE, arrow_direction="up")
         
         
-        
+if __name__ == "__main__":
+    unittest.main()

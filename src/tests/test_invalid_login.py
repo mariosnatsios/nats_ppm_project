@@ -26,4 +26,6 @@ class Test_Valid_SignUp(Fixtures):
             Test invalid login with no email
         """
         check_invalid_login(data={"email": "mmm@example.com"}, error_fields=['password'])
-        
+
+if __name__ == "__main__":
+    unittest.main()

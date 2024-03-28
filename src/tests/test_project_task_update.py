@@ -75,5 +75,6 @@ class Test_Project_Task_Update(Fixtures):
         check_project_task(project_id=self.PROJECT_ID, task_data=self.TASKS[0])
     
     
-    
+if __name__ == "__main__":
+    unittest.main()
     

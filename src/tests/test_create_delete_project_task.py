@@ -76,5 +76,7 @@ class Test_Create_Delete_Project_Task(Fixtures):
         """
         login(LOG_IN_CREDENTIALS)
         delete_projects(self.PROJECT_NAMES)
+     
         
-    
+if __name__ == "__main__":
+    unittest.main()

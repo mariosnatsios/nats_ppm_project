@@ -28,3 +28,6 @@ class Test_Valid_SignUp(Fixtures):
         """
         check_invalid_signup(data=self.INVALID_3, existing_email=True)
 
+
+if __name__ == "__main__":
+    unittest.main()
