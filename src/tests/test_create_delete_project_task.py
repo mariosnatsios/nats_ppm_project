@@ -74,5 +74,7 @@ class Test_Create_Delete_Project_Task(Fixtures):
         """
             Delete created project and reset
         """
+        login(LOG_IN_CREDENTIALS)
+        delete_projects(self.PROJECT_NAMES)
         
     
