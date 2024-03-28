@@ -4,7 +4,7 @@ Before running the automated tests, ensure you have the following installed:
 
 - Python (version 3.12.0 or higher)
 - Selenium WebDriver
-- Chromedriver (Webdriver for Chrome browser)
+- Chromedriver for Chrome
 
 Installation
 -------------------------
