@@ -93,13 +93,24 @@ class Navigate():
     
     def update_tasks_page(self, id):
         """
-            Navigates to project tasks page for a specific project id 
+            Navigates to update task page for a specific task id
         """
         from src.pages.update_project_task_page import UpdateTaskPage
         url = f"https://pm-tool-e63fa77e3353.herokuapp.com/tasks/{id}/update"
         CONF.driver.get(url)
         # Return page object
         return UpdateTaskPage()
+    
+    def tasks_db_page(self):
+        """
+            Navigates to task db page
+        """
+        from src.pages.tasks_db_page import TaskDbPage
+        url = "https://pm-tool-e63fa77e3353.herokuapp.com/tasks/db"
+        CONF.driver.get(url)
+        # Return page object
+        return TaskDbPage()
+        
     
         
         

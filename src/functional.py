@@ -466,5 +466,25 @@ def edit_project_task(task_id, task_data):
         
     # Clicks the Update button
     page.click_button_update_task()
-
-      
+    
+    
+def check_task_db_ordering(task_cards_before, task_cards_after, arrow_direction="up"):
+    """
+        Validate ordering in task db page
+        
+        @param task cards = list with the names of task cards we want to validate
+        @param arrow: arrow direction ("up" or "down")
+    """
+    page = navigate.tasks_db_page()
+    time.sleep(2)
+    # Validate default ordering before press the sorting button
+    page.validate_div_task_cards(task_cards=task_cards_before, check_order=True)
+    # Activate button by clicking it
+    page.click_a_sort_by_summary_btn()
+    time.sleep(2)
+    # Click 'Sort by Summary' button
+    page.click_a_sort_by_summary_arrow_btn(arrow=arrow_direction)
+    time.sleep(1)
+    # Validate the sorted elements
+    page.validate_div_task_cards(task_cards=task_cards_after, check_order=True)
+    
