@@ -1,4 +1,5 @@
 from selenium import webdriver
+from selenium.webdriver.chrome.service import Service
 
 class ConfigurationHelper():
     
@@ -12,7 +13,9 @@ class ConfigurationHelper():
         """
             Set chrome web driver
         """
-        driver = webdriver.Chrome()
+        service = Service(executable_path=r'C:\Users\MariosNatsios\Downloads\chromedriver.exe')
+        options = webdriver.ChromeOptions()
+        driver = webdriver.Chrome(service=service, options=options)
         return driver
     
  # ConfigurationHelper object   
