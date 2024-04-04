@@ -25,9 +25,9 @@ Running Tests
 ---------------
 To execute the automated tests, follow these steps:
 
-1. Navigate into the `tests` directory:
+1. Navigate into the `nats_ppm_project` directory:
   `````````````
-   cd src/tests
+   cd nats_ppm_project
   `````````````
 2. Run the test suite using the following command:
    ``````````````````````
